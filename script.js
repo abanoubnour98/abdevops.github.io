@@ -182,7 +182,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     try {
         console.log('Sending:', JSON.stringify(data)); // ✅ Outside of fetch()
         
-        const response = await fetch('https://vodavip.us/contact-cv.php', {
+        const response = await fetch('https://gamebuzz.us/contact-cv.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
