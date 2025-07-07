@@ -179,7 +179,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     formData.append('message', document.getElementById('message').value);
     
     try {
-        const response = await fetch('contact.php', {
+        const response = await fetch('https://vodavip.us/contact-cv.php', {
             method: 'POST',
             body: formData
         });
