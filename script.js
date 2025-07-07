@@ -171,26 +171,30 @@ function showProjectModal(projectIndex) {
 // Contact form handling
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
-    const formData = new FormData();
-    formData.append('name', document.getElementById('name').value);
-    formData.append('email', document.getElementById('email').value);
-    formData.append('subject', document.getElementById('subject').value);
-    formData.append('message', document.getElementById('message').value);
-    
+
+    const data = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
     try {
         const response = await fetch('https://vodavip.us/contact-cv.php', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         });
-        
-        const result = await response.text();
-        
+
+        const result = await response.json();
+
         if (response.ok) {
             alert('Message sent successfully! I will get back to you soon.');
             this.reset();
         } else {
-            alert('There was an error sending your message. Please try again.');
+            alert(`Error: ${result.error || 'Message failed to send.'}`);
         }
     } catch (error) {
         console.error('Error:', error);
