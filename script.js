@@ -186,6 +186,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
+            console.log('Sending:', JSON.stringify(data));
         });
 
         const result = await response.json();
